@@ -1,0 +1,55 @@
+/* 1. 모든 요소와 가상 요소에 box-sizing 적용 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. 기본 여백 제거 */
+*:where(:not(dialog)) {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. html 및 body 기본 설정 */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 4. 미디어 요소 반응형 설정 */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 5. 폼 및 텍스트 요소 상속 */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 6. 문장 줄바꿈 개선 */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance; /* 제목은 균형 있게 */
+}
+p {
+  text-wrap: pretty; /* 본문은 어색한 줄바꿈 방지 */
+}

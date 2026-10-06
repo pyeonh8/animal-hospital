@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap");
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-family: var(--font-family);
+  font-size: var(--font-body-size);
+  line-height: var(--font-body-line);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* 제목 */
+.text-display {
+  font-size: var(--font-display-size);
+  line-height: var(--font-display-line);
+  font-weight: 700;
+}
+
+.text-page-title {
+  font-size: var(--font-h1-size);
+  line-height: var(--font-h1-line);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--font-h2-size);
+  line-height: var(--font-h2-line);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: var(--font-h3-size);
+  line-height: var(--font-h3-line);
+  font-weight: 700;
+}
+
+.text-title {
+  font-size: var(--font-title-size);
+  line-height: var(--font-title-line);
+  font-weight: 700;
+}
+
+/* 브라우저 기본 스타일 제거 */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* 포커스 아웃라인 */
+:focus-visible {
+  outline: 3px solid var(--color-orange-soft);
+  outline-offset: 2px;
+}
+
+/* 컨테이너 */
+.container {
+  max-width: var(--container);
+  padding-inline: var(--layout-gutter);
+  margin-inline: auto;
+}
+
+/* 숨김 텍스트 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* 본문 바로가기 */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  padding: 12px 20px;
+  background-color: var(--color-brown);
+  color: white;
+  z-index: 999;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* 운영체제에서 "동작 줄이기"를 켠 사용자에게는 애니메이션을 끔 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
