@@ -1,0 +1,91 @@
+/* 브레이크포인트: 768px, 1024px */
+
+:root {
+  /* 브랜드 */
+  --color-primary: #c2410c; /* 버튼, 선택 상태 */
+  --color-primary-text: #9a3412; /* 링크, 소제목 */
+  --color-orange: #f28c28; /* 면 전용. 흰 글자 금지(2.45:1) */
+  --color-orange-soft: #f6b26b; /* 포커스 */
+  --color-brown: #4a2c17; /* 어두운 면 */
+
+  /* 텍스트·배경·선 */
+  --color-text: #3b2314;
+  --color-text-sub: #6b4a36;
+  --color-bg: #fff8f0;
+  --color-surface: #ffffff; /* 카드, 입력 필드 */
+  --color-tint: #fde8d0; /* 섹션 배경, hover, 아이콘 원 */
+  --color-tint-2: #f3dcc4; /* 이미지 자리 표시 */
+  --color-line: #ead9c8;
+  --color-line-strong: #a98567; /* 입력 테두리 */
+  --color-footer: #3b2314;
+
+  /* 상태 */
+  --color-error: #b42318;
+  --color-error-bg: #fff4f2;
+  --color-disabled-bg: #f3ebe3;
+  --color-disabled-text: #7a6455;
+
+  /* 폰트 명 */
+  --font-family: "IBM Plex Sans KR", sans-serif;
+
+  /* 폰트 크기 */
+  --font-display-size: 34px;
+  --font-h1-size: 30px;
+  --font-h2-size: 28px;
+  --font-h3-size: 22px;
+  --font-title-size: 19px;
+  --font-body-lg-size: 16px;
+  --font-body-size: 16px;
+  --font-caption-size: 13px;
+
+  /* 폰트 행간 */
+  --font-display-line: 1.22;
+  --font-h1-line: 1.3;
+  --font-h2-line: 1.35;
+  --font-h3-line: 1.4;
+  --font-title-line: 1.5;
+  --font-body-lg-line: 1.6;
+  --font-body-line: 1.6;
+  --font-caption-line: 1.6;
+
+  /* 간격 */
+  --space-40: 40px;
+  --space-32: 32px;
+  --space-24: 24px;
+  --space-20: 20px;
+  --space-16: 16px;
+  --space-12: 12px;
+  --space-8: 8px;
+
+  /* 모서리 */
+  --radius-sm: 12px; /* 입력, 검색 */
+  --radius-md: 20px; /* 이미지, 작은 카드 */
+  --radius-lg: 28px; /* 카드, 모달 */
+  --radius-pill: 999px; /* 버튼, 탭 */
+
+  /* 레이아웃 */
+  --container: 1200px;
+  --section-y: 56px;
+  --card-gap: 12px;
+  --layout-gutter: 20px;
+}
+
+/* PC */
+@media (min-width: 1024px) {
+  :root {
+    /* 폰트 크기 */
+    --font-display-size: 60px;
+    --font-h1-size: 44px;
+    --font-h2-size: 36px;
+    --font-h3-size: 28px;
+    --font-title-size: 22px;
+    --font-body-lg-size: 18px;
+    --font-body-size: 16px;
+    --font-caption-size: 14px;
+
+    /* 레이아웃 */
+    --section-y: 96px;
+    --card-gap: 20px;
+    --layout-gutter: 24px;
+  }
+}
