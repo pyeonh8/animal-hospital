@@ -49,6 +49,11 @@
       text-align: left;
       vertical-align: middle;
     }
+
+    .guide-field {
+      display: flex;
+      justify-content: space-between;
+    }
   </style>
 </head>
 
@@ -118,8 +123,40 @@
           있어
           이 가이드에서 새로 정한 값입니다.</p>
       </section>
+
+      <section class="guide-section">
+        <h2>폼</h2>
+        <div class="guide-section__preview ">
+          <div class="guide-field">
+            <div class="field">
+              <label for="input1" class="field__label">기본</label>
+              <input id="input1" type="text" class="field__input" placeholder="입력해 주세요">
+            </div>
+            <div class="field">
+              <label for="input2" class="field__label">error</label>
+              <input id="input2" type="text" class="field__input" placeholder="입력해 주세요" value="010-123"
+                aria-describedby="number-error" aria-invalid="true">
+              <p id="number-error" class="field__error">연락처를 끝까지 입력해 주세요.</p>
+            </div>
+
+            <div class="field">
+              <label for="input2" class="field__label">error</label>
+              <input id="input2" type="text" class="field__input" placeholder="입력해 주세요" value="010-123"
+                aria-describedby="number-error1" aria-invalid="true">
+              <p id="number-error1" class="field__error">연락처를 끝까지 입력해 주세요.</p>
+            </div>
+
+            <div class="field">
+              <label for="input3" class="field__label">disabled</label>
+              <input id="input3" type="text" class="field__input" value="입력 불가" disabled>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
+
+  <script src="../assets/js/ui.js"></script>
 </body>
 
 </html>
