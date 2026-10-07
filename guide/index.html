@@ -53,6 +53,11 @@
     .guide-field {
       display: flex;
       justify-content: space-between;
+      gap: 20px;
+    }
+
+    .guide-radio {
+      /* font-weight: 600; */
     }
   </style>
 </head>
@@ -130,26 +135,37 @@
           <div class="guide-field">
             <div class="field">
               <label for="input1" class="field__label">기본</label>
-              <input id="input1" type="text" class="field__input" placeholder="입력해 주세요">
+              <input id="input1" type="text" name="user" class="field__input" placeholder="입력해 주세요">
             </div>
             <div class="field">
               <label for="input2" class="field__label">error</label>
-              <input id="input2" type="text" class="field__input" placeholder="입력해 주세요" value="010-123"
+              <input id="input2" type="text" name="phone" class="field__input" placeholder="입력해 주세요" value="010-123"
                 aria-describedby="number-error" aria-invalid="true">
               <p id="number-error" class="field__error">연락처를 끝까지 입력해 주세요.</p>
             </div>
-
-            <div class="field">
-              <label for="input2" class="field__label">error</label>
-              <input id="input2" type="text" class="field__input" placeholder="입력해 주세요" value="010-123"
-                aria-describedby="number-error1" aria-invalid="true">
-              <p id="number-error1" class="field__error">연락처를 끝까지 입력해 주세요.</p>
-            </div>
-
             <div class="field">
               <label for="input3" class="field__label">disabled</label>
-              <input id="input3" type="text" class="field__input" value="입력 불가" disabled>
+              <input id="input3" type="text" name="" class="field__input" value="입력 불가" disabled>
             </div>
+          </div>
+
+          <div class="guide-radio">
+            <p style="padding-bottom: 8px; font-weight: 700;">라디오 카드 (선택 / 기본)</p>
+            <div class="radio-group">
+              <label class="radio">
+                <input type="radio" name="card" class="radio__input" checked>
+                <span class="radio__text">강아지</span>
+              </label>
+              <label class="radio">
+                <input type="radio" name="card" class="radio__input">
+                <span class="radio__text">고양이</span>
+              </label>
+            </div>
+
+
+            <input type="checkbox" id="check" class="check__input" checked>
+            <label for="check" class="check__label">체크박스</label>
+
           </div>
         </div>
       </section>

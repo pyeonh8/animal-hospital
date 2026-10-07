@@ -61,6 +61,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
 }
 
 .field__label {
@@ -68,13 +69,13 @@
 }
 
 .field__input {
+  width: 100%;
   height: 52px;
   padding: 0 16px;
   color: var(--color-text);
   border: 1px solid var(--color-line-strong);
   border-radius: var(--radius-sm);
   background-color: var(--color-surface);
-  width: 100%;
 }
 
 .field__input:focus {
@@ -96,4 +97,34 @@
   color: var(--color-error);
   font-size: var(--font-caption-size);
   font-weight: 500;
+  padding-left: 8px;
+}
+
+/* 라디오 */
+.radio-group {
+  display: flex;
+  gap: 10px;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 22px;
+  cursor: pointer;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-sm);
+}
+
+.radio__text {
+  margin-top: 1px;
+}
+
+.radio:has(.radio__input:checked) {
+  background-color: var(--color-tint);
+  border: 2px solid var(--color-primary);
+  font-weight: 700;
+  accent-color: var(--color-primary);
 }
