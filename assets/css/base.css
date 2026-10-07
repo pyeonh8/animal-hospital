@@ -63,6 +63,10 @@ button {
   cursor: pointer;
 }
 
+:disabled {
+  cursor: not-allowed
+}
+
 /* 포커스 아웃라인 */
 :focus-visible {
   outline: 3px solid var(--color-orange-soft);

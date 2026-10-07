@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <title>멍냥 동물병원 가이드</title>
+  <style>
+    .guide-main {
+      margin: 64px 0;
+    }
+
+    .guide-header hgroup p {
+      color: var(--color-primary-text);
+      font-weight: 700;
+    }
+
+    .guide-header hgroup h1 {
+      padding: 8px 0;
+    }
+
+    .guide-section {
+      margin: 72px 0;
+    }
+
+    .guide-section h2 {
+      padding-bottom: 8px;
+      border-bottom: 3px solid var(--color-text);
+    }
+
+    .guide-section__preview {
+      margin: 24px 0;
+      padding: 28px;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0px 3px 0px 0px var(--color-line);
+    }
+
+    .guide-section__preview table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .guide-section__preview th,
+    .guide-section__preview td {
+      padding: 8px 0;
+      text-align: left;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main" class="skip-link">본문 바로가기</a>
+  <main id="main" class="guide-main">
+    <div class="container">
+
+      <header class="guide-header">
+        <hgroup>
+          <p>멍냥 동물병원</p>
+          <h1 class="text-page-title">스타일 가이드</h1>
+        </hgroup>
+        <p>시안에 쓰인 컬러, 타이포, 간격, 컴포넌트 상태를 CSS 변수 이름과 함께 정리하였습니다. (임시문구)</p>
+      </header>
+
+      <section class="guide-section">
+        <h2>버튼</h2>
+        <div class="guide-section__preview">
+          <table>
+            <caption class="sr-only">버튼 스타일</caption>
+            <colgroup>
+              <col style="width: 25%;">
+            </colgroup>
+            <tr>
+              <td></td>
+              <th scope="col">기본 (hover, focus)</th>
+              <th scope="col">disabled</th>
+            </tr>
+            <tr>
+              <th scope="row">Primary </th>
+              <td>
+                <button type="button" class="btn btn--primary">진료 예약</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn--primary" disabled>진료 예약</button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Secondary </th>
+              <td>
+                <button type="button" class="btn btn--secondary">진료과목 보기</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn--secondary" disabled>진료과목 보기</button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Dark </th>
+              <td>
+                <button type="button" class="btn btn--dark">검색</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn--dark" disabled>검색</button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">텍스트 링크 </th>
+              <td>
+                <a href="#" class="text-link">자세히 보기 →</a>
+              </td>
+              <td>해당없음</td>
+            </tr>
+          </table>
+        </div>
+        <p>터치 영역은 최소 44px. 포커스 표시는 모든 요소에 outline: 3px solid #F6B26B; outline-offset: 2px로 통일합니다. hover 색은 시안에 일부만 그려져
+          있어
+          이 가이드에서 새로 정한 값입니다.</p>
+      </section>
+    </div>
+  </main>
+</body>
+
+</html>
