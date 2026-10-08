@@ -270,6 +270,10 @@ body:has(.quick-bar) .toast-region {
     scroll-padding-top: 100px;
   }
 
+  html:has(.quick-bar) {
+    scroll-padding-bottom: 0px;
+  }
+
   .wave {
     height: 70px;
   }
