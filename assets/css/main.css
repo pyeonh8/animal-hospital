@@ -3,7 +3,7 @@
    모바일 기준으로 작성하고 1024px 이상에서 PC 값으로 덮어씀
    ========================================================= */
 
-/* 공통: 섹션 제목 묶음, 물결 곡선 */
+/* 공통: 섹션 제목 묶음 (물결 곡선은 layout.css) */
 .section-head {
   display: flex;
   flex-direction: column;
@@ -33,25 +33,6 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-}
-
-.wave {
-  display: block;
-  width: 100%;
-  height: 36px;
-  fill: currentColor;
-}
-
-.wave--brown {
-  color: var(--color-brown);
-}
-
-.wave--tint {
-  color: var(--color-tint);
-}
-
-.wave--bg {
-  color: var(--color-bg);
 }
 
 /* ---------------------------------------------------------
@@ -647,10 +628,6 @@
   .section-head {
     gap: var(--space-8);
     margin-bottom: var(--space-40);
-  }
-
-  .wave {
-    height: 70px;
   }
 
   /* 히어로 */

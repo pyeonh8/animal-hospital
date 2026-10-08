@@ -111,11 +111,59 @@
   border: none;
 }
 
+/* 에러 문구: 색만으로 구분하지 않도록 앞에 아이콘을 붙임. 비어 있으면 숨김 */
 .field__error {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
   color: var(--color-error);
   font-size: var(--font-caption-size);
   font-weight: 500;
-  padding-left: 8px;
+}
+
+.field__error::before {
+  content: "";
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23B42318' stroke-width='1.8' stroke-linecap='round'%3E%3Ccircle cx='8' cy='8' r='6.5'/%3E%3Cpath d='M8 4.5v4M8 11.2v.2'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+.field__error:empty {
+  display: none;
+}
+
+/* 필수 표시 (*) */
+.required {
+  color: var(--color-error);
+  font-weight: 700;
+}
+
+/* 도움말, 글자 수 */
+.field__help {
+  color: var(--color-text-sub);
+  font-size: var(--font-caption-size);
+}
+
+.field__count {
+  text-align: right;
+}
+
+/* 셀렉트: 브라우저 기본 화살표 대신 같은 모양의 화살표 */
+.field__select {
+  appearance: none;
+  padding-right: 44px;
+  background: var(--color-surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%233B2314' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 8l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 16px center / 20px;
+  cursor: pointer;
+}
+
+/* 여러 줄 입력 */
+.field__textarea {
+  height: auto;
+  min-height: 140px;
+  padding: 14px 16px;
+  resize: vertical;
 }
 
 /* 라디오 */
@@ -164,6 +212,17 @@
   accent-color: var(--color-primary);
 }
 
+/* 라디오 카드를 칸에 꽉 채우는 변형 (모바일 3열 등) */
+.radio-group--fill .radio {
+  flex: 1;
+  justify-content: center;
+  padding: 0 var(--space-12);
+}
+
+.radio-group[aria-invalid="true"] .radio {
+  border-color: var(--color-error);
+}
+
 /* 체크박스 */
 .check {
   display: inline-flex;
@@ -174,11 +233,21 @@
 }
 
 .check__input {
+  flex-shrink: 0;
   width: 22px;
   height: 22px;
   margin: 0;
   accent-color: var(--color-primary);
   cursor: pointer;
+}
+
+.check__input[aria-invalid="true"] {
+  outline: 2px solid var(--color-error);
+  outline-offset: 2px;
+}
+
+.check__text {
+  font-weight: 600;
 }
 
 /* 시간 버튼 */
@@ -211,6 +280,30 @@
   background-color: var(--color-primary);
   color: var(--color-surface);
   font-weight: 600;
+}
+
+.time-group[aria-invalid="true"] .time-btn:not(:disabled) {
+  border-color: var(--color-error);
+}
+
+/* 모바일에서 3열로 맞추는 변형 */
+.time-group--grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.time-group--grid .time-btn {
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .time-group--grid {
+    display: flex;
+  }
+
+  .time-group--grid .time-btn {
+    min-width: 96px;
+  }
 }
 
 .time-btn:disabled {
