@@ -52,12 +52,39 @@
 
     .guide-field {
       display: flex;
-      justify-content: space-between;
+      flex-wrap: wrap;
       gap: 20px;
     }
 
-    .guide-radio {
-      /* font-weight: 600; */
+    .guide-field .field {
+      flex: 1 1 220px;
+    }
+
+    .guide-block+.guide-block {
+      margin-top: 32px;
+    }
+
+    .guide-label {
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .guide-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--card-gap);
+    }
+
+    .guide-note {
+      color: var(--color-text-sub);
+      font-size: var(--font-caption-size);
     }
   </style>
 </head>
@@ -72,7 +99,7 @@
           <p>멍냥 동물병원</p>
           <h1 class="text-page-title">스타일 가이드</h1>
         </hgroup>
-        <p>시안에 쓰인 컬러, 타이포, 간격, 컴포넌트 상태를 CSS 변수 이름과 함께 정리하였습니다. (임시문구)</p>
+        <p>버튼, 폼, 탭 등 컴포넌트 스타일을 정리한 가이드 문서</p>
       </header>
 
       <section class="guide-section">
@@ -131,48 +158,188 @@
 
       <section class="guide-section">
         <h2>폼</h2>
-        <div class="guide-section__preview ">
-          <div class="guide-field">
-            <div class="field">
-              <label for="input1" class="field__label">기본</label>
-              <input id="input1" type="text" name="user" class="field__input" placeholder="입력해 주세요">
-            </div>
-            <div class="field">
-              <label for="input2" class="field__label">error</label>
-              <input id="input2" type="text" name="phone" class="field__input" placeholder="입력해 주세요" value="010-123"
-                aria-describedby="number-error" aria-invalid="true">
-              <p id="number-error" class="field__error">연락처를 끝까지 입력해 주세요.</p>
-            </div>
-            <div class="field">
-              <label for="input3" class="field__label">disabled</label>
-              <input id="input3" type="text" name="" class="field__input" value="입력 불가" disabled>
+        <div class="guide-section__preview">
+          <div class="guide-block">
+            <p class="guide-label">입력 필드 (기본 / 에러 / 비활성)</p>
+            <div class="guide-field">
+              <div class="field">
+                <label for="input1" class="field__label">이름</label>
+                <input id="input1" type="text" name="user" class="field__input" placeholder="입력해 주세요">
+              </div>
+              <div class="field">
+                <label for="input2" class="field__label">연락처</label>
+                <input id="input2" type="tel" name="phone" class="field__input" placeholder="010-0000-0000"
+                  value="010-123" data-validate="phone" aria-describedby="phone-error" aria-invalid="true">
+                <p id="phone-error" class="field__error">연락처를 끝까지 입력해 주세요.</p>
+              </div>
+              <div class="field">
+                <label for="input3" class="field__label">비활성</label>
+                <input id="input3" type="text" name="disabled" class="field__input" value="입력 불가" disabled>
+              </div>
             </div>
           </div>
 
-          <div class="guide-radio">
-            <p style="padding-bottom: 8px; font-weight: 700;">라디오 카드 (선택 / 기본)</p>
-            <div class="radio-group">
-              <label class="radio">
-                <input type="radio" name="card" class="radio__input" checked>
-                <span class="radio__text">강아지</span>
-              </label>
-              <label class="radio">
-                <input type="radio" name="card" class="radio__input">
-                <span class="radio__text">고양이</span>
+          <div class="guide-block">
+            <p class="guide-label" id="pet-label">라디오 카드 / 체크박스</p>
+            <div class="guide-row">
+              <div class="radio-group" role="radiogroup" aria-labelledby="pet-label">
+                <label class="radio">
+                  <input type="radio" name="pet" class="radio__input" checked>
+                  <span class="radio__text">강아지</span>
+                </label>
+                <label class="radio">
+                  <input type="radio" name="pet" class="radio__input">
+                  <span class="radio__text">고양이</span>
+                </label>
+              </div>
+              <label class="check">
+                <input type="checkbox" class="check__input" checked>
+                <span class="check__text">개인정보 수집에 동의합니다</span>
               </label>
             </div>
+          </div>
 
-
-            <input type="checkbox" id="check" class="check__input" checked>
-            <label for="check" class="check__label">체크박스</label>
-
+          <div class="guide-block">
+            <p class="guide-label" id="time-label">시간 버튼 (누르면 선택이 바뀜, 11:30은 마감)</p>
+            <div class="time-group" data-time-group role="group" aria-labelledby="time-label">
+              <button type="button" class="time-btn" aria-pressed="false">10:00</button>
+              <button type="button" class="time-btn" aria-pressed="false">10:30</button>
+              <button type="button" class="time-btn" aria-pressed="true">11:00</button>
+              <button type="button" class="time-btn" disabled>11:30<span class="sr-only"> 마감</span></button>
+            </div>
           </div>
         </div>
       </section>
+
+      <section class="guide-section">
+        <h2>배지 · 페이지네이션 · 카드</h2>
+        <div class="guide-section__preview">
+          <div class="guide-block">
+            <p class="guide-label">배지</p>
+            <div class="guide-row">
+              <span class="badge">공지</span>
+              <span class="badge badge--new">NEW</span>
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <p class="guide-label">페이지네이션 (첫 페이지)</p>
+            <nav class="pagination" aria-label="페이지 이동">
+              <a class="pagination__link pagination__link--arrow" aria-label="이전 페이지" aria-disabled="true">←</a>
+              <a href="#" class="pagination__link" aria-current="page" aria-label="1페이지, 현재 페이지">1</a>
+              <a href="#" class="pagination__link" aria-label="2페이지">2</a>
+              <a href="#" class="pagination__link" aria-label="3페이지">3</a>
+              <a href="#" class="pagination__link pagination__link--arrow" aria-label="다음 페이지">→</a>
+            </nav>
+          </div>
+
+          <div class="guide-block">
+            <p class="guide-label">카드</p>
+            <ul class="guide-grid">
+              <li class="card">
+                <h3 class="card__title">소화기 질환</h3>
+                <p class="card__desc">구토, 설사, 식욕 부진, 췌장염, 장염</p>
+              </li>
+              <li class="card">
+                <h3 class="card__title">호흡기 질환</h3>
+                <p class="card__desc">기침, 콧물, 호흡 곤란, 기관지염</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="guide-section">
+        <h2>탭</h2>
+        <div class="guide-section__preview">
+          <div class="tabs" data-tabs>
+            <div class="tabs__list" role="tablist" aria-label="진료과목">
+              <button type="button" class="tabs__tab" role="tab" id="tab-1" aria-selected="true"
+                aria-controls="panel-1">내과</button>
+              <button type="button" class="tabs__tab" role="tab" id="tab-2" aria-selected="false"
+                aria-controls="panel-2" tabindex="-1">외과</button>
+              <button type="button" class="tabs__tab" role="tab" id="tab-3" aria-selected="false"
+                aria-controls="panel-3" tabindex="-1">치과</button>
+              <button type="button" class="tabs__tab" role="tab" id="tab-4" aria-selected="false"
+                aria-controls="panel-4" tabindex="-1">피부과</button>
+              <button type="button" class="tabs__tab" role="tab" id="tab-5" aria-selected="false"
+                aria-controls="panel-5" tabindex="-1">건강검진</button>
+              <button type="button" class="tabs__tab" role="tab" id="tab-6" aria-selected="false"
+                aria-controls="panel-6" tabindex="-1">예방접종</button>
+            </div>
+            <div class="tabs__panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1" tabindex="0">
+              <p>내과 패널입니다. 소화기, 호흡기, 신장, 내분비 질환을 진료합니다.</p>
+            </div>
+            <div class="tabs__panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" tabindex="0" hidden>
+              <p>외과 패널입니다.</p>
+            </div>
+            <div class="tabs__panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" tabindex="0" hidden>
+              <p>치과 패널입니다.</p>
+            </div>
+            <div class="tabs__panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4" tabindex="0" hidden>
+              <p>피부과 패널입니다.</p>
+            </div>
+            <div class="tabs__panel" role="tabpanel" id="panel-5" aria-labelledby="tab-5" tabindex="0" hidden>
+              <p>건강검진 패널입니다.</p>
+            </div>
+            <div class="tabs__panel" role="tabpanel" id="panel-6" aria-labelledby="tab-6" tabindex="0" hidden>
+              <p>예방접종 패널입니다.</p>
+            </div>
+          </div>
+        </div>
+        <p class="guide-note">탭에 포커스가 있을 때 ← → 키로 이동하고, Home / End 키로 처음과 끝으로 갑니다.</p>
+      </section>
+
+      <section class="guide-section">
+        <h2>토스트 · 모달</h2>
+        <div class="guide-section__preview">
+          <div class="guide-row">
+            <button type="button" class="btn btn--primary" data-toast-title="예약 신청이 접수됐어요"
+              data-toast-desc="010-0000-0000으로 안내 메시지를 보냈어요. 병원에서 확인 후 연락드릴게요.">토스트 띄우기</button>
+            <button type="button" class="btn btn--secondary" data-modal-open="notice-modal">공지사항 모달 열기</button>
+          </div>
+        </div>
+        <p class="guide-note">토스트는 6초 뒤 사라지고, 마우스를 올리면 멈춥니다. 모달은 Esc 키나 바깥 영역을 눌러도 닫힙니다.</p>
+      </section>
+
+      <dialog id="notice-modal" class="modal" aria-labelledby="notice-modal-title">
+        <div class="modal__header">
+          <div class="modal__heading">
+            <p class="modal__meta"><span class="badge">공지</span><span>휴진</span></p>
+            <h2 id="notice-modal-title" class="modal__title">추석 연휴 휴진 안내</h2>
+            <p class="modal__info">작성일 2026.09.20 · 조회 128</p>
+          </div>
+          <button type="button" class="modal__close" aria-label="공지사항 닫기" data-modal-close autofocus>
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" aria-hidden="true">
+              <path d="M5 5l12 12M17 5L5 17" />
+            </svg>
+          </button>
+        </div>
+        <div class="modal__body" tabindex="0">
+          <p>추석 연휴 기간에는 병원 진료를 쉽니다. 진료 일정에 참고해 주세요.</p>
+          <div class="modal__box">
+            <p><strong>휴진 일정</strong></p>
+            <p>2026.10.04(일) ~ 2026.10.07(수)</p>
+            <p>정상 진료: 2026.10.08(목)부터</p>
+          </div>
+          <p>휴진 기간 중 응급 상황은 가까운 24시 동물병원을 이용해 주세요.</p>
+        </div>
+        <div class="modal__footer">
+          <div class="modal__nav">
+            <button type="button" class="btn btn--secondary">← 이전 글</button>
+            <button type="button" class="btn btn--secondary">다음 글 →</button>
+          </div>
+          <button type="button" class="btn btn--primary" data-modal-close>닫기</button>
+        </div>
+      </dialog>
     </div>
   </main>
 
-  <script src="../assets/js/ui.js"></script>
+  <!-- 토스트가 들어갈 자리: 항상 비어 있는 상태로 두고 JS가 내용을 넣음 -->
+  <div class="toast-region" role="status" aria-live="polite"></div>
+
+  <script src="../assets/js/ui.js" defer></script>
 </body>
 
 </html>
