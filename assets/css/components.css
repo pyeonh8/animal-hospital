@@ -66,12 +66,15 @@
   color: var(--color-surface);
 }
 
-/* 버튼 disabled */
+/* 버튼 disabled
+   aria-disabled: 포커스는 남겨 두고 누를 수만 없게 할 때 (모달의 이전/다음 글) */
 
-.btn:disabled {
+.btn:disabled,
+.btn[aria-disabled="true"] {
   background-color: var(--color-disabled-bg);
   color: var(--color-disabled-text);
   border: none;
+  cursor: not-allowed;
 }
 
 /* 필드 */
