@@ -28,8 +28,7 @@ const url = (path) => SITE_ROOT + path;
 const PAW_ICON = `<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="12" r="2.6"/><circle cx="16" cy="8" r="2.6"/><circle cx="23" cy="12" r="2.6"/><path d="M10 23c0-4 3-7 6-7s6 3 6 7c0 2-2 3-6 3s-6-1-6-3z"/></svg>`;
 
 function headerTemplate() {
-  const links = (cls) =>
-    NAV_ITEMS.map((item) => `<li><a class="${cls}" href="${url(item.path)}">${item.label}</a></li>`).join("");
+  const links = (cls) => NAV_ITEMS.map((item) => `<li><a class="${cls}" href="${url(item.path)}">${item.label}</a></li>`).join("");
 
   return `
     <div class="site-header__inner container">
@@ -88,10 +87,10 @@ function footerTemplate() {
 
 function quickBarTemplate() {
   return `
-    <div class="quick-bar">
+    <nav class="quick-bar" aria-label="빠른 메뉴">
       <a class="btn btn--secondary" href="tel:${SITE.tel.replace(/\D/g, "")}">전화하기</a>
       <a class="btn btn--primary" href="${url("sub/reserve.html")}">진료 예약</a>
-    </div>`;
+    </nav>`;
 }
 
 // 지금 페이지와 주소가 같은 메뉴에 aria-current="page"

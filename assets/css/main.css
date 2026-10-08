@@ -42,6 +42,7 @@
    --------------------------------------------------------- */
 .hero {
   background-color: var(--color-tint);
+  overflow-x: clip;
 }
 
 .hero__inner {
@@ -619,6 +620,18 @@
   .dept__feature {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  /* 히어로: 화면 폭만큼 늘어나면 사진이 가로로 길쭉해져서 폭을 제한하고 가운데로.
+     버튼은 전체 폭 대신 가로로 나란히 */
+  .hero__visual {
+    align-self: center;
+    width: min(100%, 480px);
+    height: 400px;
+  }
+
+  .hero__actions {
+    flex-direction: row;
+  }
 }
 
 /* =========================================================
@@ -652,6 +665,8 @@
   .hero__visual {
     flex: 1 1 0;
     order: 0;
+    align-self: auto;
+    width: auto;
     height: 480px;
     margin-top: 0;
   }

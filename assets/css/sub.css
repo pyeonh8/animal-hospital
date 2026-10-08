@@ -171,17 +171,20 @@
   border-top: 1px solid var(--color-line);
 }
 
+/* 좁은 화면에서는 동의 문구가 두 줄로 접히고, "내용 보기"는 그 옆에 붙어 있게
+   (줄바꿈으로 버튼만 다음 줄에 떨어지지 않게 함) */
 .reserve-form__agree-row {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 0 var(--space-12);
+  gap: var(--space-12);
 }
 
 .reserve-form__agree-row .text-link {
+  flex-shrink: 0;
   min-height: 44px;
   font-size: 14px;
   text-decoration: underline;
+  white-space: nowrap;
 }
 
 .reserve-form__actions {
