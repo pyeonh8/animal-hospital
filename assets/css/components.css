@@ -50,6 +50,17 @@
   color: var(--color-text);
 }
 
+/* 어두운 면 위에 놓는 밝은 버튼 */
+.btn--light {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.btn--light:hover {
+  background-color: var(--color-tint);
+  color: var(--color-text);
+}
+
 .btn--dark:hover {
   background-color: var(--color-text);
   color: var(--color-surface);

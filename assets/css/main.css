@@ -1,0 +1,879 @@
+/* =========================================================
+   메인 페이지 전용 (index.html에서만 불러옴)
+   모바일 기준으로 작성하고 1024px 이상에서 PC 값으로 덮어씀
+   ========================================================= */
+
+/* 공통: 섹션 제목 묶음, 물결 곡선 */
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: var(--space-24);
+}
+
+.section-head h2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.section-head__desc {
+  color: var(--color-text-sub);
+}
+
+.section-head--row {
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+.section-head--row > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wave {
+  display: block;
+  width: 100%;
+  height: 36px;
+  fill: currentColor;
+}
+
+.wave--brown {
+  color: var(--color-brown);
+}
+
+.wave--tint {
+  color: var(--color-tint);
+}
+
+.wave--bg {
+  color: var(--color-bg);
+}
+
+/* ---------------------------------------------------------
+   히어로
+   모바일: 문구 → 사진 → 버튼 순서
+   PC: 왼쪽 문구+버튼, 오른쪽 사진
+   --------------------------------------------------------- */
+.hero {
+  background-color: var(--color-tint);
+}
+
+.hero__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+  padding-block: var(--space-40) var(--space-32);
+}
+
+/* 모바일에서는 문구 묶음을 풀어서 버튼을 사진 아래로 보낼 수 있게 */
+.hero__text {
+  display: contents;
+}
+
+.hero__eyebrow {
+  color: var(--color-primary-text);
+  font-size: var(--font-caption-size);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.hero__desc {
+  color: var(--color-text-sub);
+  font-size: var(--font-body-lg-size);
+}
+
+.hero__visual {
+  position: relative;
+  order: 1;
+  height: 300px;
+  margin-top: var(--space-8);
+}
+
+.hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  order: 2;
+}
+
+.hero__image {
+  position: absolute;
+  inset: 0;
+  border-radius: 58% 42% 46% 54% / 48% 56% 44% 52%;
+  background-color: var(--color-orange-soft);
+}
+
+.hero__deco {
+  position: absolute;
+  top: -28px;
+  right: -8px;
+  z-index: 1;
+  width: 96px;
+  color: var(--color-orange-soft);
+  opacity: 0.45;
+  transform: rotate(18deg);
+}
+
+.hero__badge {
+  position: absolute;
+  left: 0;
+  bottom: var(--space-16);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: var(--space-12) var(--space-16);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: 0 8px 22px rgba(74, 44, 23, 0.16);
+  line-height: 1.4;
+}
+
+.hero__badge-dot {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
+.hero__badge-label {
+  display: block;
+  color: var(--color-text-sub);
+  font-size: 12px;
+}
+
+/* ---------------------------------------------------------
+   진료 안내 바
+   --------------------------------------------------------- */
+.info-bar {
+  background-color: var(--color-brown);
+  color: var(--color-bg);
+}
+
+.info-bar__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding-block: var(--space-20) var(--space-32);
+}
+
+.info-bar__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.info-bar__item + .info-bar__item {
+  padding-top: var(--space-16);
+  border-top: 1px solid var(--color-text-sub);
+}
+
+.info-bar__item dt {
+  color: var(--color-orange-soft);
+  font-size: var(--font-caption-size);
+  font-weight: 600;
+}
+
+.info-bar__value {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.info-bar__sub {
+  color: var(--color-line);
+  font-size: 14px;
+}
+
+/* 모바일: 전화는 맨 아래에 큰 버튼으로 */
+.info-bar__item--phone {
+  order: 1;
+}
+
+.info-bar__item--phone dt {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.info-bar__phone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px var(--space-20);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.info-bar__phone:hover {
+  background-color: var(--color-tint);
+  color: var(--color-text);
+}
+
+.info-bar__phone svg {
+  color: var(--color-primary);
+}
+
+/* ---------------------------------------------------------
+   진료과목
+   --------------------------------------------------------- */
+.dept {
+  padding-block: var(--section-y);
+}
+
+.dept__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--card-gap);
+}
+
+.dept-card {
+  gap: 10px;
+  padding: var(--space-20) var(--space-16);
+  border-radius: 22px;
+}
+
+.dept-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--color-tint);
+  color: var(--color-primary);
+}
+
+.dept-card__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.dept-card__desc {
+  color: var(--color-text-sub);
+  font-size: 14px;
+}
+
+.dept__feature {
+  display: grid;
+  gap: var(--card-gap);
+  margin-top: var(--card-gap);
+}
+
+.feature-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+  padding: var(--space-24) var(--space-20);
+  border-radius: 22px;
+}
+
+.feature-card--dark {
+  background-color: var(--color-brown);
+  color: var(--color-bg);
+}
+
+.feature-card--orange {
+  background-color: var(--color-orange);
+  color: var(--color-text);
+}
+
+.feature-card__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.feature-card__eyebrow {
+  font-size: var(--font-caption-size);
+  font-weight: 600;
+}
+
+.feature-card--dark .feature-card__eyebrow {
+  color: var(--color-orange-soft);
+}
+
+.feature-card--orange .feature-card__eyebrow {
+  color: var(--color-brown);
+}
+
+.feature-card__title {
+  font-size: var(--font-h3-size);
+  line-height: var(--font-h3-line);
+}
+
+.feature-card__desc {
+  font-size: 14px;
+}
+
+.feature-card--dark .feature-card__desc {
+  color: var(--color-line);
+}
+
+.feature-card__link {
+  align-self: flex-start;
+  padding: var(--space-8) 0;
+  font-weight: 600;
+}
+
+/* 주황·갈색 면에서는 base의 주황 hover가 안 보이므로 밑줄로 */
+.feature-card__link:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.feature-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+}
+
+.feature-card__icon svg {
+  width: 34px;
+  height: 34px;
+}
+
+.feature-card--dark .feature-card__icon {
+  background-color: var(--color-text-sub);
+  color: var(--color-orange-soft);
+}
+
+.feature-card--orange .feature-card__icon {
+  background-color: var(--color-tint);
+  color: var(--color-primary-text);
+}
+
+/* ---------------------------------------------------------
+   대표원장 인사말
+   --------------------------------------------------------- */
+.greeting {
+  padding-block: var(--section-y);
+  background-color: var(--color-surface);
+}
+
+.greeting__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+}
+
+.greeting__photo {
+  height: 300px;
+  border-radius: 24px;
+  background-color: var(--color-line);
+}
+
+.greeting__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+}
+
+.greeting__eyebrow {
+  color: var(--color-primary-text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.greeting__body {
+  color: var(--color-text-sub);
+}
+
+.greeting__sign {
+  padding-top: var(--space-12);
+  border-top: 1px solid var(--color-line);
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------
+   의료진 (슬라이더)
+   --------------------------------------------------------- */
+.staff {
+  padding-top: var(--section-y);
+}
+
+.staff__controls {
+  display: none;
+  gap: var(--space-8);
+}
+
+.slider-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  font-size: 20px;
+}
+
+.slider-btn:hover {
+  background-color: var(--color-tint);
+}
+
+.slider-btn[aria-disabled="true"] {
+  border-color: var(--color-line);
+  background-color: var(--color-disabled-bg);
+  color: var(--color-disabled-text);
+  cursor: not-allowed;
+}
+
+/* 카드를 가로로 나열하고, 스크롤이 카드 단위로 멈추게 */
+.staff__list {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 240px;
+  gap: var(--card-gap);
+  margin-bottom: var(--space-32);
+  padding-bottom: var(--space-8);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.staff__list::-webkit-scrollbar {
+  display: none;
+}
+
+.staff-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  scroll-snap-align: start;
+}
+
+.staff-card__photo {
+  height: 280px;
+  margin-bottom: var(--space-8);
+  border-radius: var(--radius-md);
+  background-color: var(--color-tint-2);
+}
+
+.staff-card__part {
+  color: var(--color-primary-text);
+  font-size: var(--font-caption-size);
+  font-weight: 600;
+}
+
+.staff-card__name {
+  font-size: var(--font-title-size);
+  line-height: var(--font-title-line);
+}
+
+.staff-card__career {
+  color: var(--color-text-sub);
+  font-size: 14px;
+}
+
+/* ---------------------------------------------------------
+   보호자 후기 (예시)
+   --------------------------------------------------------- */
+.review {
+  padding-top: var(--space-40);
+  background-color: var(--color-tint);
+}
+
+.review__list {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 280px;
+  gap: var(--card-gap);
+  margin-bottom: var(--space-32);
+  padding-bottom: var(--space-8);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.review__list::-webkit-scrollbar {
+  display: none;
+}
+
+.review__list > li {
+  scroll-snap-align: start;
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  height: 100%;
+  padding: var(--space-24);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.review-card__mark {
+  color: var(--color-orange);
+}
+
+.review-card__quote {
+  flex-grow: 1;
+}
+
+.review-card__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding-top: var(--space-16);
+  border-top: 1px solid var(--color-line);
+}
+
+.review-card__avatar {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--color-tint-2);
+}
+
+.review-card__name {
+  display: block;
+  font-weight: 700;
+}
+
+.review-card__meta {
+  display: block;
+  color: var(--color-text-sub);
+  font-size: var(--font-caption-size);
+}
+
+/* ---------------------------------------------------------
+   공지사항 + 오시는 길
+   --------------------------------------------------------- */
+.home-board {
+  display: grid;
+  gap: var(--space-40);
+  padding-block: var(--space-40) var(--section-y);
+}
+
+.home-board__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-12);
+  margin-bottom: var(--space-16);
+}
+
+.home-board__head .text-link {
+  padding: 10px 0;
+}
+
+.notice-list {
+  border-top: 2px solid var(--color-text);
+}
+
+.notice-list li {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.notice-list__link {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-16) 2px;
+}
+
+.notice-list__title {
+  font-weight: 500;
+}
+
+.notice-list__date {
+  color: var(--color-text-sub);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.map-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
+  margin-bottom: var(--space-16);
+  border-radius: var(--radius-md);
+  background-color: var(--color-line);
+  color: var(--color-brown);
+  font-weight: 500;
+}
+
+.map-address {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.map-guide {
+  color: var(--color-text-sub);
+}
+
+/* =========================================================
+   태블릿 (768px 이상)
+   ========================================================= */
+@media (min-width: 768px) {
+  .staff__controls {
+    display: flex;
+  }
+
+  .dept__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .dept__feature {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================================================
+   PC (1024px 이상)
+   ========================================================= */
+@media (min-width: 1024px) {
+  .section-head {
+    gap: var(--space-8);
+    margin-bottom: var(--space-40);
+  }
+
+  .wave {
+    height: 70px;
+  }
+
+  /* 히어로 */
+  .hero__inner {
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+    padding-block: 80px;
+  }
+
+  .hero__text {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    gap: var(--space-24);
+  }
+
+  .hero__desc {
+    max-width: 480px;
+  }
+
+  .hero__visual {
+    flex: 1 1 0;
+    order: 0;
+    height: 480px;
+    margin-top: 0;
+  }
+
+  .hero__actions {
+    flex-direction: row;
+    order: 0;
+  }
+
+  .hero__deco {
+    top: -30px;
+    right: -10px;
+    width: 150px;
+  }
+
+  .hero__badge {
+    bottom: 36px;
+    gap: var(--space-12);
+    padding: var(--space-16) var(--space-24);
+  }
+
+  .hero__badge-dot {
+    width: 12px;
+    height: 12px;
+  }
+
+  .hero__badge-label {
+    font-size: 13px;
+  }
+
+  /* 진료 안내 바: 세 칸 가로 배치, 전화는 가운데 큰 글자 */
+  .info-bar__list {
+    flex-direction: row;
+    gap: 48px;
+    padding-block: 28px;
+  }
+
+  .info-bar__item {
+    flex: 1 1 0;
+    gap: 4px;
+  }
+
+  .info-bar__item + .info-bar__item {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .info-bar__item dt {
+    font-size: 14px;
+  }
+
+  .info-bar__value {
+    font-size: 18px;
+  }
+
+  .info-bar__sub {
+    font-size: 15px;
+  }
+
+  .info-bar__item--phone {
+    order: 0;
+  }
+
+  .info-bar__item--phone dt {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+  }
+
+  .info-bar__phone {
+    justify-content: flex-start;
+    padding: 0;
+    background-color: transparent;
+    color: var(--color-surface);
+    font-size: 26px;
+  }
+
+  .info-bar__phone:hover {
+    background-color: transparent;
+    color: var(--color-surface);
+    text-decoration: underline;
+  }
+
+  .info-bar__phone svg {
+    display: none;
+  }
+
+  /* 진료과목 */
+  .dept-card {
+    gap: 14px;
+    padding: var(--space-32) var(--space-24);
+    border-radius: var(--radius-lg);
+  }
+
+  .dept-card__icon {
+    width: 76px;
+    height: 76px;
+  }
+
+  .dept-card__icon svg {
+    width: 38px;
+    height: 38px;
+  }
+
+  .dept-card__desc {
+    font-size: var(--font-body-size);
+  }
+
+  .feature-card {
+    padding: var(--space-40);
+    border-radius: var(--radius-lg);
+  }
+
+  .feature-card__text {
+    gap: 10px;
+  }
+
+  .feature-card__desc {
+    font-size: var(--font-body-size);
+  }
+
+  .feature-card__icon {
+    width: 120px;
+    height: 120px;
+  }
+
+  .feature-card__icon svg {
+    width: 56px;
+    height: 56px;
+  }
+
+  /* 인사말 */
+  .greeting__inner {
+    flex-direction: row;
+    align-items: center;
+    gap: 56px;
+  }
+
+  .greeting__photo {
+    flex: 1 1 0;
+    height: 440px;
+    border-radius: var(--radius-lg);
+  }
+
+  .greeting__text {
+    flex: 1.3 1 0;
+  }
+
+  .greeting__body {
+    font-size: 17px;
+  }
+
+  /* 의료진: 한 화면에 4장 */
+  .staff__list {
+    grid-auto-columns: calc((100% - 3 * var(--card-gap)) / 4);
+    margin-bottom: 56px;
+  }
+
+  .staff-card__photo {
+    height: 320px;
+  }
+
+  /* 후기: 가로 스크롤 대신 3열 */
+  .review {
+    padding-top: var(--section-y);
+  }
+
+  .review__list {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 56px;
+    overflow: visible;
+  }
+
+  .review-card {
+    padding: var(--space-32);
+  }
+
+  /* 공지 + 오시는 길 */
+  .home-board {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 56px;
+    padding-block: var(--section-y);
+  }
+
+  .home-board__head {
+    margin-bottom: var(--space-24);
+  }
+
+  .notice-list__link {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--space-16);
+    padding: var(--space-20) 4px;
+  }
+
+  .map-box {
+    height: 260px;
+  }
+}
