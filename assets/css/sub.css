@@ -1,0 +1,555 @@
+/* =========================================================
+   서브 페이지 공통 (sub/*.html에서 불러옴)
+   ========================================================= */
+
+/* 상단 제목 영역 */
+.page-hero {
+  background-color: var(--color-tint);
+}
+
+.page-hero__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-block: var(--space-24) var(--space-16);
+}
+
+.page-hero__desc {
+  color: var(--color-text-sub);
+  font-size: 15px;
+}
+
+.page-hero .wave {
+  height: 30px;
+}
+
+/* 현재 위치 (홈 / 진료 예약) */
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  color: var(--color-text-sub);
+  font-size: var(--font-caption-size);
+}
+
+/* 구분 기호 "/"는 화면에만 보이고 스크린리더는 읽지 않음 ( / "" 부분) */
+.breadcrumb li + li::before {
+  content: "/" / "";
+  margin-right: 6px;
+}
+
+.breadcrumb [aria-current="page"] {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* 본문 + 오른쪽 안내 */
+.sub-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+  padding-block: var(--space-16) var(--space-40);
+}
+
+.sub-layout__aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+/* 안내 카드 */
+.info-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding: var(--space-24);
+  border-radius: 22px;
+}
+
+.info-card--dark {
+  background-color: var(--color-brown);
+  color: var(--color-bg);
+}
+
+.info-card--white {
+  background-color: var(--color-surface);
+}
+
+.info-card--tint {
+  background-color: var(--color-tint);
+}
+
+.info-card__title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.info-card--dark p {
+  color: var(--color-line);
+  font-size: 15px;
+}
+
+.info-card .btn {
+  width: 100%;
+}
+
+.info-card__hours {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-8) var(--space-16);
+}
+
+.info-card__hours dt {
+  font-weight: 600;
+}
+
+.info-card__hours dd {
+  text-align: right;
+}
+
+.info-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  color: var(--color-brown);
+}
+
+.info-card__list li {
+  position: relative;
+  padding-left: var(--space-16);
+}
+
+.info-card__list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.7em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
+/* ---------------------------------------------------------
+   예약 폼
+   --------------------------------------------------------- */
+.reserve-form {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.reserve-form__note {
+  color: var(--color-text-sub);
+  font-size: 14px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+  border: 0;
+}
+
+.form-section__title {
+  padding-bottom: var(--space-12);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.form-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.reserve-form__agree {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding-top: var(--space-24);
+  border-top: 1px solid var(--color-line);
+}
+
+/* 좁은 화면에서는 동의 문구가 두 줄로 접히고, "내용 보기"는 그 옆에 붙어 있게
+   (줄바꿈으로 버튼만 다음 줄에 떨어지지 않게 함) */
+.reserve-form__agree-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.reserve-form__agree-row .text-link {
+  flex-shrink: 0;
+  min-height: 44px;
+  font-size: 14px;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.reserve-form__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.reserve-form__submit {
+  height: 56px;
+  font-size: 18px;
+}
+
+/* 태블릿 이상 */
+@media (min-width: 768px) {
+  .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-20);
+  }
+
+  .reserve-form__actions {
+    flex-direction: row;
+  }
+
+  .reserve-form__actions .btn {
+    height: 56px;
+    font-size: 18px;
+  }
+
+  .reserve-form__submit {
+    flex: 2;
+  }
+
+  .reserve-form__actions .btn--secondary {
+    flex: 1;
+  }
+}
+
+/* PC */
+@media (min-width: 1024px) {
+  .page-hero__inner {
+    gap: var(--space-12);
+    padding-block: 56px var(--space-40);
+  }
+
+  .page-hero__desc {
+    font-size: 17px;
+  }
+
+  .page-hero .wave {
+    height: 60px;
+  }
+
+  .breadcrumb a,
+  .breadcrumb li {
+    padding-block: var(--space-8);
+  }
+
+  .breadcrumb ol {
+    gap: var(--space-8);
+  }
+
+  .sub-layout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-40);
+    padding-block: var(--space-40) var(--section-y);
+  }
+
+  .sub-layout__main {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .sub-layout__aside {
+    position: sticky;
+    top: 110px;
+    flex: 0 0 340px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-20);
+  }
+
+  .info-card {
+    gap: var(--space-16);
+    padding: var(--space-32);
+    border-radius: var(--radius-lg);
+  }
+
+  .info-card__title {
+    font-size: 20px;
+  }
+
+  .reserve-form {
+    gap: var(--space-40);
+    padding: var(--space-40);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-surface);
+  }
+
+  .form-section {
+    gap: var(--space-20);
+  }
+
+  .form-section__title {
+    padding-bottom: var(--space-16);
+    font-size: 22px;
+  }
+
+  .reserve-form__agree {
+    gap: var(--space-20);
+    padding-top: var(--space-32);
+  }
+}
+
+/* =========================================================
+   공지사항 게시판
+   - 768px 미만: 카드 목록 / 768px 이상: 표
+   ========================================================= */
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+  padding-top: var(--space-16);
+  padding-bottom: var(--section-y);
+}
+
+.board__toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.board__count {
+  font-size: var(--font-caption-size);
+}
+
+.board__count strong {
+  color: var(--color-primary-text);
+}
+
+/* 검색 */
+.board-search {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.board-search__type {
+  flex: 0 0 120px;
+  height: 48px;
+  padding: 0 32px 0 12px;
+  background-position: right 10px center;
+  background-size: 18px;
+}
+
+.board-search__input {
+  flex: 1;
+  min-width: 0;
+  height: 48px;
+}
+
+/* 모바일은 아이콘만 보이는 정사각형 버튼 (글자는 스크린리더용으로 남김) */
+.board-search__btn {
+  flex: 0 0 48px;
+  padding: 0;
+}
+
+.board-search__text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* 표 (모바일에서는 숨김) */
+.board-table-wrap {
+  display: none;
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  box-shadow: 0 3px 0 var(--color-line);
+}
+
+.board-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.board-table th {
+  padding: var(--space-16) var(--space-12);
+  background-color: var(--color-brown);
+  color: var(--color-bg);
+  font-weight: 600;
+}
+
+.board-table__num,
+.board-table__views {
+  width: 90px;
+}
+
+.board-table__cat {
+  width: 110px;
+}
+
+.board-table__date {
+  width: 140px;
+}
+
+.board-table td {
+  padding: var(--space-16) var(--space-12);
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-text-sub);
+}
+
+.board-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.board-table__row--pinned {
+  background-color: var(--color-bg);
+}
+
+.board-table__title {
+  text-align: left;
+}
+
+.board-title {
+  color: var(--color-text);
+  font-weight: 500;
+  text-align: left;
+}
+
+.board-table__row--pinned .board-title {
+  font-weight: 700;
+}
+
+.board-title:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.board-table__title .badge--new {
+  margin-left: 6px;
+  vertical-align: 2px;
+}
+
+/* 카드 목록 (모바일) */
+.notice-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+}
+
+.notice-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: 100%;
+  padding: var(--space-20);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: 0 3px 0 var(--color-line);
+  text-align: left;
+}
+
+.notice-card--pinned {
+  border: 1px solid var(--color-orange-soft);
+  box-shadow: none;
+}
+
+.notice-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  color: var(--color-text-sub);
+  font-size: var(--font-caption-size);
+}
+
+.notice-card__title {
+  font-weight: 500;
+}
+
+.notice-card--pinned .notice-card__title {
+  font-weight: 700;
+}
+
+.notice-card:hover .notice-card__title {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.notice-card__info {
+  color: var(--color-text-sub);
+  font-size: var(--font-caption-size);
+}
+
+/* 검색 결과 없음 */
+.board__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-40) var(--space-20);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  text-align: center;
+}
+
+.board__empty[hidden] {
+  display: none;
+}
+
+.board__pagination {
+  padding-top: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .board {
+    gap: var(--space-24);
+    padding-top: var(--space-32);
+  }
+
+  /* 건수는 왼쪽, 검색은 오른쪽 */
+  .board__toolbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-16);
+  }
+
+  .board__count {
+    order: -1;
+    font-size: var(--font-body-size);
+  }
+
+  .board-search__input {
+    flex: 0 1 260px;
+  }
+
+  .board-search__btn {
+    flex: none;
+    padding: 0 var(--space-24);
+  }
+
+  .board-search__icon {
+    display: none;
+  }
+
+  .board-search__text {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+  }
+
+  .board-table-wrap {
+    display: block;
+  }
+
+  .notice-cards {
+    display: none;
+  }
+}

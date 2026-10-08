@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="멍냥 동물병원 진료 예약 (포트폴리오용 가상 사이트)">
+  <title>진료 예약 | 멍냥 동물병원</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/sub.css">
+</head>
+
+<body>
+  <a href="#main" class="skip-link">본문 바로가기</a>
+
+  <header class="site-header" data-include="header"></header>
+
+  <main id="main">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="page-hero__inner container">
+        <nav class="breadcrumb" aria-label="현재 위치">
+          <ol>
+            <li><a href="../index.html">홈</a></li>
+            <li aria-current="page">진료 예약</li>
+          </ol>
+        </nav>
+        <h1 class="text-page-title" id="page-title">진료 예약</h1>
+        <p class="page-hero__desc">예약 신청 후 병원에서 확인 연락을 드리면 예약이 확정됩니다.</p>
+      </div>
+      <svg class="wave wave--bg" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 60V32C240 4 480 0 720 22s480 30 720 2v36z" />
+      </svg>
+    </section>
+
+    <div class="sub-layout container">
+      <!-- novalidate: 브라우저 기본 말풍선 대신 직접 만든 에러 문구를 씀 -->
+      <form class="reserve-form sub-layout__main" novalidate data-reserve-form aria-labelledby="page-title">
+        <p class="reserve-form__note"><span class="required" aria-hidden="true">*</span> 표시는 필수 입력 항목입니다.</p>
+
+        <fieldset class="form-section">
+          <legend class="form-section__title">1. 보호자 정보</legend>
+          <div class="form-grid">
+            <div class="field">
+              <label for="owner" class="field__label">보호자 이름 <span class="required" aria-hidden="true">*</span></label>
+              <input id="owner" name="owner" type="text" class="field__input" autocomplete="name" placeholder="이름을 입력해 주세요"
+                required data-validate="required" data-message="보호자 이름을 입력해 주세요." aria-describedby="owner-error">
+              <p id="owner-error" class="field__error"></p>
+            </div>
+            <div class="field">
+              <label for="phone" class="field__label">연락처 <span class="required" aria-hidden="true">*</span></label>
+              <input id="phone" name="phone" type="tel" class="field__input" inputmode="numeric" autocomplete="tel"
+                maxlength="13" placeholder="010-0000-0000" required data-validate="phone" data-format="phone"
+                aria-describedby="phone-error">
+              <p id="phone-error" class="field__error"></p>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend class="form-section__title">2. 반려동물 정보</legend>
+          <div class="form-grid">
+            <div class="field">
+              <label for="pet" class="field__label">반려동물 이름 <span class="required" aria-hidden="true">*</span></label>
+              <input id="pet" name="pet" type="text" class="field__input" placeholder="예: 보리"
+                required data-validate="required" data-message="반려동물 이름을 입력해 주세요." aria-describedby="pet-error">
+              <p id="pet-error" class="field__error"></p>
+            </div>
+            <div class="field">
+              <label for="age" class="field__label">나이</label>
+              <input id="age" name="age" type="text" class="field__input" inputmode="numeric" placeholder="예: 3살">
+            </div>
+          </div>
+          <div class="field">
+            <span class="field__label" id="kind-label">종류 <span class="required" aria-hidden="true">*</span></span>
+            <div class="radio-group radio-group--fill" role="radiogroup" aria-labelledby="kind-label" aria-required="true"
+              data-validate="choice" data-message="반려동물 종류를 골라 주세요." aria-describedby="kind-error">
+              <label class="radio">
+                <input type="radio" name="kind" value="dog" class="radio__input">
+                <span class="radio__text">강아지</span>
+              </label>
+              <label class="radio">
+                <input type="radio" name="kind" value="cat" class="radio__input">
+                <span class="radio__text">고양이</span>
+              </label>
+              <label class="radio">
+                <input type="radio" name="kind" value="etc" class="radio__input">
+                <span class="radio__text">기타</span>
+              </label>
+            </div>
+            <p id="kind-error" class="field__error"></p>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-section">
+          <legend class="form-section__title">3. 예약 정보</legend>
+          <div class="form-grid">
+            <div class="field">
+              <label for="dept" class="field__label">진료과목 <span class="required" aria-hidden="true">*</span></label>
+              <select id="dept" name="dept" class="field__input field__select" required data-validate="required"
+                data-message="진료과목을 골라 주세요." aria-describedby="dept-error">
+                <option value="">진료과목을 선택해 주세요</option>
+                <option>내과</option>
+                <option>외과</option>
+                <option>치과</option>
+                <option>피부과</option>
+                <option>건강검진</option>
+                <option>예방접종</option>
+              </select>
+              <p id="dept-error" class="field__error"></p>
+            </div>
+            <div class="field">
+              <label for="date" class="field__label">희망 날짜 <span class="required" aria-hidden="true">*</span></label>
+              <input id="date" name="date" type="date" class="field__input" required data-validate="date"
+                aria-describedby="date-error">
+              <p id="date-error" class="field__error"></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field__label" id="time-label">희망 시간 <span class="required" aria-hidden="true">*</span></span>
+            <!-- 시간 버튼은 날짜를 고르면 reserve.js가 그 날의 진료시간에 맞춰 새로 그림 -->
+            <div class="time-group time-group--grid" role="group" aria-labelledby="time-label"
+              data-time-group data-time-slots data-validate="choice" data-message="희망 시간을 골라 주세요."
+              aria-describedby="time-help time-error"></div>
+            <p id="time-help" class="field__help" aria-live="polite"></p>
+            <p id="time-error" class="field__error"></p>
+          </div>
+
+          <div class="field">
+            <label for="memo" class="field__label">증상 및 요청 사항</label>
+            <textarea id="memo" name="memo" class="field__input field__textarea" rows="5" maxlength="500"
+              placeholder="언제부터 어떤 증상이 있었는지 적어 주시면 진료에 도움이 됩니다." aria-describedby="memo-count"></textarea>
+            <p id="memo-count" class="field__help field__count">0 / 500자</p>
+          </div>
+        </fieldset>
+
+        <div class="reserve-form__agree">
+          <div class="field">
+            <div class="reserve-form__agree-row">
+              <label class="check">
+                <input type="checkbox" id="agree" name="agree" class="check__input" required data-validate="checked"
+                  data-message="개인정보 수집 및 이용에 동의해 주셔야 예약할 수 있어요." aria-describedby="agree-error">
+                <span class="check__text">개인정보 수집 및 이용에 동의합니다. <span class="required" aria-hidden="true">*</span></span>
+              </label>
+              <button type="button" class="text-link" data-modal-open="privacy-modal">내용 보기</button>
+            </div>
+            <p id="agree-error" class="field__error"></p>
+          </div>
+
+          <div class="reserve-form__actions">
+            <button type="submit" class="btn btn--primary reserve-form__submit">예약 신청하기</button>
+            <a class="btn btn--secondary" href="../index.html">취소</a>
+          </div>
+        </div>
+      </form>
+
+      <aside class="sub-layout__aside" aria-label="예약 안내">
+        <div class="info-card info-card--dark">
+          <h2 class="info-card__title">급하신가요?</h2>
+          <p>응급 상황이나 당일 예약은 전화로 문의해 주세요.</p>
+          <a class="btn btn--light" href="tel:020000000">02-000-0000</a>
+        </div>
+        <div class="info-card info-card--white">
+          <h2 class="info-card__title">진료시간</h2>
+          <dl class="info-card__hours">
+            <dt>평일</dt>
+            <dd>09:00 – 19:00</dd>
+            <dt>토요일</dt>
+            <dd>09:00 – 15:00</dd>
+            <dt>일·공휴일</dt>
+            <dd>휴진</dd>
+          </dl>
+        </div>
+        <div class="info-card info-card--tint">
+          <h2 class="info-card__title">방문 전 확인해 주세요</h2>
+          <ul class="info-card__list">
+            <li>이동장이나 목줄을 꼭 준비해 주세요.</li>
+            <li>접종 기록이나 이전 검사 결과가 있으면 가져와 주세요.</li>
+            <li>금식이 필요한 검사는 예약 확인 전화에서 안내해 드려요.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <dialog id="privacy-modal" class="modal" aria-labelledby="privacy-title">
+      <div class="modal__header">
+        <div class="modal__heading">
+          <h2 id="privacy-title" class="modal__title">개인정보 수집 및 이용 안내</h2>
+          <p class="modal__info">포트폴리오용 가상 사이트의 예시 문구입니다.</p>
+        </div>
+        <button type="button" class="modal__close" aria-label="안내 닫기" data-modal-close autofocus>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" aria-hidden="true">
+            <path d="M5 5l12 12M17 5L5 17" />
+          </svg>
+        </button>
+      </div>
+      <div class="modal__body" tabindex="0">
+        <div class="modal__box">
+          <p><strong>수집 항목</strong></p>
+          <p>보호자 이름, 연락처, 반려동물 이름·나이·종류, 증상 및 요청 사항</p>
+        </div>
+        <div class="modal__box">
+          <p><strong>이용 목적</strong></p>
+          <p>진료 예약 확인과 안내 연락</p>
+        </div>
+        <div class="modal__box">
+          <p><strong>보관 기간</strong></p>
+          <p>예약일로부터 1년</p>
+        </div>
+        <p>동의하지 않으셔도 되지만, 이 경우 온라인 예약은 할 수 없고 전화로 예약해 주셔야 합니다.</p>
+      </div>
+      <div class="modal__footer">
+        <button type="button" class="btn btn--primary" data-modal-close>확인</button>
+      </div>
+    </dialog>
+  </main>
+
+  <footer class="site-footer" data-include="footer"></footer>
+
+  <div class="toast-region" role="status" aria-live="polite"></div>
+
+  <script type="module" src="../assets/js/reserve.js"></script>
+</body>
+
+</html>

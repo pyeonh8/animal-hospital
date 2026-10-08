@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="멍냥 동물병원 공지사항 (포트폴리오용 가상 사이트)">
+  <title>공지사항 | 멍냥 동물병원</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/sub.css">
+</head>
+
+<body>
+  <a href="#main" class="skip-link">본문 바로가기</a>
+
+  <header class="site-header" data-include="header"></header>
+
+  <main id="main">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="page-hero__inner container">
+        <nav class="breadcrumb" aria-label="현재 위치">
+          <ol>
+            <li><a href="../index.html">홈</a></li>
+            <li aria-current="page">공지사항</li>
+          </ol>
+        </nav>
+        <h1 class="text-page-title" id="page-title">공지사항</h1>
+        <p class="page-hero__desc">휴진, 진료시간 변경 등 병원 소식을 알려 드립니다.</p>
+      </div>
+      <svg class="wave wave--bg" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 60V32C240 4 480 0 720 22s480 30 720 2v36z" />
+      </svg>
+    </section>
+
+    <!-- 목록·건수·페이지 번호는 notice.js가 주소(?q=&page=)를 읽어서 그림 -->
+    <div class="board container" id="board" data-board>
+      <div class="board__toolbar">
+        <!-- GET 폼: 제출하면 notice.html?type=title&q=검색어 로 이동 -->
+        <form class="board-search" role="search" action="notice.html#board" method="get" data-board-search>
+          <label class="sr-only" for="search-type">검색 조건</label>
+          <select class="field__input field__select board-search__type" id="search-type" name="type">
+            <option value="title">제목</option>
+            <option value="content">내용</option>
+            <option value="all">제목+내용</option>
+          </select>
+          <label class="sr-only" for="search-q">검색어</label>
+          <input class="field__input board-search__input" type="search" id="search-q" name="q"
+            placeholder="검색어 입력">
+          <button type="submit" class="btn btn--dark board-search__btn">
+            <svg class="board-search__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+              stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="9" cy="9" r="6" />
+              <path d="M14 14l4 4" />
+            </svg>
+            <span class="board-search__text">검색</span>
+          </button>
+        </form>
+        <p class="board__count" data-board-count></p>
+      </div>
+
+      <noscript>
+        <p class="board__empty">공지사항 목록은 자바스크립트를 켜야 볼 수 있어요.</p>
+      </noscript>
+
+      <div class="board__list" data-board-list>
+        <!-- 768px 이상: 표 -->
+        <div class="board-table-wrap">
+          <table class="board-table">
+            <caption class="sr-only">공지사항 목록: 번호, 분류, 제목, 작성일, 조회수</caption>
+            <thead>
+              <tr>
+                <th scope="col" class="board-table__num">번호</th>
+                <th scope="col" class="board-table__cat">분류</th>
+                <th scope="col">제목</th>
+                <th scope="col" class="board-table__date">작성일</th>
+                <th scope="col" class="board-table__views">조회</th>
+              </tr>
+            </thead>
+            <tbody data-board-rows></tbody>
+          </table>
+        </div>
+        <!-- 768px 미만: 카드 목록 -->
+        <ul class="notice-cards" data-board-cards></ul>
+      </div>
+
+      <div class="board__empty" data-board-empty hidden>
+        <p>검색 결과가 없어요. 다른 검색어로 찾아보세요.</p>
+        <a class="text-link" href="notice.html">전체 목록 보기</a>
+      </div>
+
+      <nav class="pagination board__pagination" aria-label="페이지 이동" data-board-pagination></nav>
+    </div>
+
+    <!-- 공지 상세: 내용은 notice.js가 누른 글로 채움 -->
+    <dialog id="notice-modal" class="modal" aria-labelledby="notice-modal-title">
+      <div class="modal__header">
+        <!-- 이전/다음 글로 바뀌면 바뀐 제목을 읽어 줌 -->
+        <div class="modal__heading" aria-live="polite">
+          <p class="modal__meta" data-modal-meta></p>
+          <h2 id="notice-modal-title" class="modal__title" data-modal-title></h2>
+          <p class="modal__info" data-modal-info></p>
+        </div>
+        <button type="button" class="modal__close" aria-label="공지사항 닫기" data-modal-close autofocus>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" aria-hidden="true">
+            <path d="M5 5l12 12M17 5L5 17" />
+          </svg>
+        </button>
+      </div>
+      <div class="modal__body" tabindex="0" data-modal-body></div>
+      <div class="modal__footer">
+        <div class="modal__nav">
+          <button type="button" class="btn btn--secondary" data-modal-prev>← 이전 글</button>
+          <button type="button" class="btn btn--secondary" data-modal-next>다음 글 →</button>
+        </div>
+        <button type="button" class="btn btn--primary" data-modal-close>닫기</button>
+      </div>
+    </dialog>
+  </main>
+
+  <footer class="site-footer" data-include="footer"></footer>
+
+  <script type="module" src="../assets/js/notice.js"></script>
+</body>
+
+</html>
